@@ -1,0 +1,28 @@
+{
+  "name": "last.fm-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon src/server.js",
+    "start": "cross-env NODE_ENV=production node src/server.js",
+    "test": "cross-env NODE_ENV=test jest --verbose --silent",
+    "test:watch": "npm run test -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/esacon/las.fm-rest-api.git"
+  },
+  "keywords": [
+    "rest",
+    "api",
+    "last.fm",
+    "test"
+  ],
+  "author": "Enrique Niebles",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/esacon/las.fm-rest-api/issues"
+  },
+  "homepage": "https://github.com/esacon/las.fm-rest-api#readme"
+}
