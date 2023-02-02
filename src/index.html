@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Artist Information API</title>
+</head>
+<body>
+    <h1>Artist Information API</h1>
+    <p>Welcome to the Artist Information API, where you can retrieve information about artists. </p>
+    <h2>Endpoint</h2>
+    <p>To retrieve information about an artist, make a GET request to the following endpoint:</p>
+    <code>http://localhost:3000/artist</code>
+    <h2>Query parameters</h2>
+    <p>The API supports two query parameters:</p>
+    <ul>
+        <li>
+            <b>name:</b> The name of the artist you want to retrieve information about. If no name is provided, a random artist will be selected.
+        </li>
+        <li>
+            <b>filename:</b> The name of the file where the result will be saved in CSV format. If no filename is provided, a default name will be generated.
+        </li>
+    </ul>
+    <h2>Example</h2>
+    <p>Here is an example URL that searches for the artist "Coldplay" and saves the result to a file named "artists":</p>
+    <code>http://localhost:3000/artist?name=coldplay&filename=artists</code>
+    <h2>Response</h2>
+    <p>The API will return a JSON object with the following information about each artist that coincided with search params:</p>
+    <ul>
+        <li>
+            <b>name:</b> The name of the artist.
+        </li>
+        <li>
+            <b>mbid:</b> The MusicBrainz Identifier of the artist.
+        </li>
+        <li>
+            <b>url:</b> The URL of the artist on last.fm.
+        </li>
+        <li>
+            <b>image_small:</b> A small image of the artist.
+        </li>
+        <li>
+            <b>image:</b> A list of images of different sizes for the artist.
+        </li>
+    </ul>
+    <p>The response will be also save in the specified CSV file.</p>
+</body>
+</html>
