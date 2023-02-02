@@ -76,27 +76,27 @@ const retrieveResult = async (artist) => {
  * @returns {Object} - JSON object containing the artist data and CSV file name.
  */
 const fetchArtist = async (req, res) => {
-  // Get the artist name from the request query or a random artist from the sampleArtist array.
-  let artist = req.query?.name || getRandomArtist();
-  // Retrieve the artist data from the Last.fm API.
-  let result = await retrieveResult(artist);
-  // If the API call returns an error, return a 400 Bad Request response.
-  if (result.error) return res.status(400).json(result);
-  // If the API call returns no results, get a different random artist.
-  if (result.length === 0) artist = getRandomArtist();
-  result = await retrieveResult(artist);
-  // Filter the artist data to include only the desired information.
-  const data = result?.map(r => {
-    const { name, mbid, url, image } = r;
-    const image_small = r?.image?.find(i => i.size === 'small')?.['#text'];
-    return { name, mbid, url, image_small, image };
-  });
-  // Determine the filename for the CSV file, either from the request query or a generated name.
-  const filename = req.query?.filename || `artist_${artist}_${Date.now()}`;
-  // Save the filtered artist data to a CSV file.
-  saveArtistResult(data, filename);
-  // Return the artist data in a JSON response.
-  return res.status(200).json(data);
+    // Get the artist name from the request query or a random artist from the sampleArtist array.
+    let artist = req.query?.name || getRandomArtist();
+    // Retrieve the artist data from the Last.fm API.
+    let result = await retrieveResult(artist);
+    // If the API call returns an error, return a 400 Bad Request response.
+    if (result.error) return res.status(400).json(result);
+    // If the API call returns no results, get a different random artist.
+    if (result.length === 0) artist = getRandomArtist();
+    result = await retrieveResult(artist);
+    // Filter the artist data to include only the desired information.
+    const data = result?.map(r => {
+        const { name, mbid, url, image } = r;
+        const image_small = r?.image?.find(i => i.size === 'small')?.['#text'];
+        return { name, mbid, url, image_small, image };
+    });
+    // Determine the filename for the CSV file, either from the request query or a generated name.
+    const filename = req.query?.filename || `artist_${artist}_${Date.now()}`;
+    // Save the filtered artist data to a CSV file.
+    saveArtistResult(data, filename);
+    // Return the artist data in a JSON response.
+    return res.status(200).json(data);
 }
 
 module.exports = {
